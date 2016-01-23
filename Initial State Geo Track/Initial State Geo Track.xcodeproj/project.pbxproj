@@ -1,0 +1,676 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1677A9721C52A730001B73C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9711C52A730001B73C6 /* AppDelegate.swift */; };
+		1677A9741C52A730001B73C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9731C52A730001B73C6 /* ViewController.swift */; };
+		1677A9771C52A730001B73C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677A9751C52A730001B73C6 /* Main.storyboard */; };
+		1677A9791C52A730001B73C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1677A9781C52A730001B73C6 /* Assets.xcassets */; };
+		1677A97C1C52A730001B73C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677A97A1C52A730001B73C6 /* LaunchScreen.storyboard */; };
+		1677A9871C52A730001B73C6 /* Initial_State_Geo_TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9861C52A730001B73C6 /* Initial_State_Geo_TrackTests.swift */; };
+		1677A9921C52A730001B73C6 /* Initial_State_Geo_TrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9911C52A730001B73C6 /* Initial_State_Geo_TrackUITests.swift */; };
+		1677A9A01C52A82D001B73C6 /* initialstate-wide.png in Resources */ = {isa = PBXBuildFile; fileRef = 1677A99F1C52A82D001B73C6 /* initialstate-wide.png */; };
+		1677A9B91C52AFB0001B73C6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */; };
+		1677A9BA1C52AFB0001B73C6 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1677A9BF1C52B027001B73C6 /* InitialStateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */; };
+		16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CE31C5447BA00E6A145 /* AuthedView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1677A9831C52A730001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9661C52A730001B73C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1677A96D1C52A730001B73C6;
+			remoteInfo = "Initial State Geo Track";
+		};
+		1677A98E1C52A730001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9661C52A730001B73C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1677A96D1C52A730001B73C6;
+			remoteInfo = "Initial State Geo Track";
+		};
+		1677A9AB1C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		1677A9AD1C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		1677A9AF1C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		1677A9B11C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		1677A9B31C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		1677A9B51C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		1677A9B71C52AF3D001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		1677A9BB1C52AFB0001B73C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1677A9BD1C52AFB0001B73C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1677A9BA1C52AFB0001B73C6 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1677A96E1C52A730001B73C6 /* Initial State Geo Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Initial State Geo Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1677A9711C52A730001B73C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1677A9731C52A730001B73C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1677A9761C52A730001B73C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1677A9781C52A730001B73C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1677A97B1C52A730001B73C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1677A97D1C52A730001B73C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1677A9821C52A730001B73C6 /* Initial State Geo TrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Initial State Geo TrackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1677A9861C52A730001B73C6 /* Initial_State_Geo_TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial_State_Geo_TrackTests.swift; sourceTree = "<group>"; };
+		1677A9881C52A730001B73C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1677A98D1C52A730001B73C6 /* Initial State Geo TrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Initial State Geo TrackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1677A9911C52A730001B73C6 /* Initial_State_Geo_TrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial_State_Geo_TrackUITests.swift; sourceTree = "<group>"; };
+		1677A9931C52A730001B73C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1677A99F1C52A82D001B73C6 /* initialstate-wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "initialstate-wide.png"; sourceTree = "<group>"; };
+		1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateApi.swift; sourceTree = "<group>"; };
+		16EA2CE31C5447BA00E6A145 /* AuthedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1677A96B1C52A730001B73C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1677A9B91C52AFB0001B73C6 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A97F1C52A730001B73C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A98A1C52A730001B73C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1677A9651C52A730001B73C6 = {
+			isa = PBXGroup;
+			children = (
+				1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */,
+				1677A9701C52A730001B73C6 /* Initial State Geo Track */,
+				1677A9851C52A730001B73C6 /* Initial State Geo TrackTests */,
+				1677A9901C52A730001B73C6 /* Initial State Geo TrackUITests */,
+				1677A96F1C52A730001B73C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1677A96F1C52A730001B73C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1677A96E1C52A730001B73C6 /* Initial State Geo Track.app */,
+				1677A9821C52A730001B73C6 /* Initial State Geo TrackTests.xctest */,
+				1677A98D1C52A730001B73C6 /* Initial State Geo TrackUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1677A9701C52A730001B73C6 /* Initial State Geo Track */ = {
+			isa = PBXGroup;
+			children = (
+				1677A99F1C52A82D001B73C6 /* initialstate-wide.png */,
+				1677A9711C52A730001B73C6 /* AppDelegate.swift */,
+				1677A9731C52A730001B73C6 /* ViewController.swift */,
+				1677A9751C52A730001B73C6 /* Main.storyboard */,
+				1677A9781C52A730001B73C6 /* Assets.xcassets */,
+				1677A97A1C52A730001B73C6 /* LaunchScreen.storyboard */,
+				1677A97D1C52A730001B73C6 /* Info.plist */,
+				1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */,
+				16EA2CE31C5447BA00E6A145 /* AuthedView.swift */,
+			);
+			path = "Initial State Geo Track";
+			sourceTree = "<group>";
+		};
+		1677A9851C52A730001B73C6 /* Initial State Geo TrackTests */ = {
+			isa = PBXGroup;
+			children = (
+				1677A9861C52A730001B73C6 /* Initial_State_Geo_TrackTests.swift */,
+				1677A9881C52A730001B73C6 /* Info.plist */,
+			);
+			path = "Initial State Geo TrackTests";
+			sourceTree = "<group>";
+		};
+		1677A9901C52A730001B73C6 /* Initial State Geo TrackUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1677A9911C52A730001B73C6 /* Initial_State_Geo_TrackUITests.swift */,
+				1677A9931C52A730001B73C6 /* Info.plist */,
+			);
+			path = "Initial State Geo TrackUITests";
+			sourceTree = "<group>";
+		};
+		1677A9A21C52AF3D001B73C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */,
+				1677A9AE1C52AF3D001B73C6 /* Alamofire iOS Tests.xctest */,
+				1677A9B01C52AF3D001B73C6 /* Alamofire.framework */,
+				1677A9B21C52AF3D001B73C6 /* Alamofire OSX Tests.xctest */,
+				1677A9B41C52AF3D001B73C6 /* Alamofire.framework */,
+				1677A9B61C52AF3D001B73C6 /* Alamofire tvOS Tests.xctest */,
+				1677A9B81C52AF3D001B73C6 /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1677A96D1C52A730001B73C6 /* Initial State Geo Track */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1677A9961C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo Track" */;
+			buildPhases = (
+				1677A96A1C52A730001B73C6 /* Sources */,
+				1677A96B1C52A730001B73C6 /* Frameworks */,
+				1677A96C1C52A730001B73C6 /* Resources */,
+				1677A9BD1C52AFB0001B73C6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1677A9BC1C52AFB0001B73C6 /* PBXTargetDependency */,
+			);
+			name = "Initial State Geo Track";
+			productName = "Initial State Geo Track";
+			productReference = 1677A96E1C52A730001B73C6 /* Initial State Geo Track.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1677A9811C52A730001B73C6 /* Initial State Geo TrackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1677A9991C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo TrackTests" */;
+			buildPhases = (
+				1677A97E1C52A730001B73C6 /* Sources */,
+				1677A97F1C52A730001B73C6 /* Frameworks */,
+				1677A9801C52A730001B73C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1677A9841C52A730001B73C6 /* PBXTargetDependency */,
+			);
+			name = "Initial State Geo TrackTests";
+			productName = "Initial State Geo TrackTests";
+			productReference = 1677A9821C52A730001B73C6 /* Initial State Geo TrackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1677A98C1C52A730001B73C6 /* Initial State Geo TrackUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1677A99C1C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo TrackUITests" */;
+			buildPhases = (
+				1677A9891C52A730001B73C6 /* Sources */,
+				1677A98A1C52A730001B73C6 /* Frameworks */,
+				1677A98B1C52A730001B73C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1677A98F1C52A730001B73C6 /* PBXTargetDependency */,
+			);
+			name = "Initial State Geo TrackUITests";
+			productName = "Initial State Geo TrackUITests";
+			productReference = 1677A98D1C52A730001B73C6 /* Initial State Geo TrackUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1677A9661C52A730001B73C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Initial State Technologies, Inc.";
+				TargetAttributes = {
+					1677A96D1C52A730001B73C6 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					1677A9811C52A730001B73C6 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 1677A96D1C52A730001B73C6;
+					};
+					1677A98C1C52A730001B73C6 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 1677A96D1C52A730001B73C6;
+					};
+				};
+			};
+			buildConfigurationList = 1677A9691C52A730001B73C6 /* Build configuration list for PBXProject "Initial State Geo Track" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1677A9651C52A730001B73C6;
+			productRefGroup = 1677A96F1C52A730001B73C6 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1677A9A21C52AF3D001B73C6 /* Products */;
+					ProjectRef = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1677A96D1C52A730001B73C6 /* Initial State Geo Track */,
+				1677A9811C52A730001B73C6 /* Initial State Geo TrackTests */,
+				1677A98C1C52A730001B73C6 /* Initial State Geo TrackUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 1677A9AB1C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9AE1C52AF3D001B73C6 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 1677A9AD1C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9B01C52AF3D001B73C6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 1677A9AF1C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9B21C52AF3D001B73C6 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 1677A9B11C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9B41C52AF3D001B73C6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 1677A9B31C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9B61C52AF3D001B73C6 /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = 1677A9B51C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1677A9B81C52AF3D001B73C6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 1677A9B71C52AF3D001B73C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1677A96C1C52A730001B73C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1677A97C1C52A730001B73C6 /* LaunchScreen.storyboard in Resources */,
+				1677A9A01C52A82D001B73C6 /* initialstate-wide.png in Resources */,
+				1677A9791C52A730001B73C6 /* Assets.xcassets in Resources */,
+				1677A9771C52A730001B73C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A9801C52A730001B73C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A98B1C52A730001B73C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1677A96A1C52A730001B73C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1677A9741C52A730001B73C6 /* ViewController.swift in Sources */,
+				16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */,
+				1677A9BF1C52B027001B73C6 /* InitialStateApi.swift in Sources */,
+				1677A9721C52A730001B73C6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A97E1C52A730001B73C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1677A9871C52A730001B73C6 /* Initial_State_Geo_TrackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1677A9891C52A730001B73C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1677A9921C52A730001B73C6 /* Initial_State_Geo_TrackUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1677A9841C52A730001B73C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1677A96D1C52A730001B73C6 /* Initial State Geo Track */;
+			targetProxy = 1677A9831C52A730001B73C6 /* PBXContainerItemProxy */;
+		};
+		1677A98F1C52A730001B73C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1677A96D1C52A730001B73C6 /* Initial State Geo Track */;
+			targetProxy = 1677A98E1C52A730001B73C6 /* PBXContainerItemProxy */;
+		};
+		1677A9BC1C52AFB0001B73C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 1677A9BB1C52AFB0001B73C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1677A9751C52A730001B73C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1677A9761C52A730001B73C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1677A97A1C52A730001B73C6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1677A97B1C52A730001B73C6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1677A9941C52A730001B73C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1677A9951C52A730001B73C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1677A9971C52A730001B73C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Initial State Geo Track/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-Track";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1677A9981C52A730001B73C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Initial State Geo Track/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-Track";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1677A99A1C52A730001B73C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Initial State Geo TrackTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-TrackTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Initial State Geo Track.app/Initial State Geo Track";
+			};
+			name = Debug;
+		};
+		1677A99B1C52A730001B73C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Initial State Geo TrackTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-TrackTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Initial State Geo Track.app/Initial State Geo Track";
+			};
+			name = Release;
+		};
+		1677A99D1C52A730001B73C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Initial State Geo TrackUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-TrackUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Initial State Geo Track";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		1677A99E1C52A730001B73C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Initial State Geo TrackUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "InitialState.Initial-State-Geo-TrackUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Initial State Geo Track";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1677A9691C52A730001B73C6 /* Build configuration list for PBXProject "Initial State Geo Track" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1677A9941C52A730001B73C6 /* Debug */,
+				1677A9951C52A730001B73C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1677A9961C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo Track" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1677A9971C52A730001B73C6 /* Debug */,
+				1677A9981C52A730001B73C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1677A9991C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo TrackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1677A99A1C52A730001B73C6 /* Debug */,
+				1677A99B1C52A730001B73C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1677A99C1C52A730001B73C6 /* Build configuration list for PBXNativeTarget "Initial State Geo TrackUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1677A99D1C52A730001B73C6 /* Debug */,
+				1677A99E1C52A730001B73C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1677A9661C52A730001B73C6 /* Project object */;
+}
