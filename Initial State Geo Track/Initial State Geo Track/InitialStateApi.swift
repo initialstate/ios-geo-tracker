@@ -138,4 +138,30 @@ class ISApi {
                 
         }
     }
+    
+    func getAccessKey(callback: (success: Bool) -> Void) {
+        
+        let url = "\(ApiBase.corev1)/me/access_keys"
+        let headers = [
+            "X-IS-AT": authenticationInfo.accessToken,
+            "X-IS-ApiKey": authenticationInfo.apiKey,
+            "X-IS-AKID": authenticationInfo.accessKeyId
+        ]
+        
+        Alamofire.request(.GET, url, headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                
+                if (response.response?.statusCode >= 200 && response.response?.statusCode < 300) {
+                    if let JSON = response.result.value {
+                        
+                        let response = (JSON as! [NSDictionary])
+                        let accessKey = response[0]
+                        self.authenticationInfo.setAccessKey(accessKey["key"] as! String)
+                        print(accessKey)
+                        
+                        callback(success: true)
+                    }
+                }
+        }
+    }
 }

@@ -12,9 +12,18 @@ class ViewController: UIViewController {
 
     var apiController = ISApi()
     
+    
+    @IBOutlet weak var onePasswordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //self.onePasswordButton.hidden = (false == OnePasswordExtension.sharedExtension().isAppExtensionAvailable())
+        
+        emailAddress.keyboardType = UIKeyboardType.EmailAddress
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,8 +39,27 @@ class ViewController: UIViewController {
     }
     @IBAction func clearPassword(sender: AnyObject) {
         password.text = "";
+        password.secureTextEntry = true
     }
     
+    
+    @IBAction func findLoginFrom1Password(sender: AnyObject) {
+        OnePasswordExtension.sharedExtension().findLoginForURLString("https://dev.initialstate.com", forViewController: self, sender: sender, completion: {
+            (loginDictionary, error) -> Void in
+            if loginDictionary == nil {
+                if error!.code != Int(AppExtensionErrorCodeCancelledByUser) {
+                    print("Error invoking 1Password App Extension: \(error)")
+                }
+                return
+            }
+            
+            self.emailAddress.text = loginDictionary?[AppExtensionUsernameKey] as? String
+            self.password.secureTextEntry = true
+            self.password.text = loginDictionary?[AppExtensionPasswordKey] as? String
+            
+            self.loginAction(sender)
+        })
+    }
     
     @IBAction func loginAction(sender: AnyObject) {
         apiController.auth(emailAddress.text!, pass: password.text!) { (tfaRequired: Bool, success: Bool) -> Void in

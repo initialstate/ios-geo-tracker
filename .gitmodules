@@ -1,3 +1,9 @@
 [submodule "Alamofire"]
 	path = Alamofire
 	url = https://github.com/Alamofire/Alamofire.git
+[submodule "onepassword-app-extension"]
+	path = onepassword-app-extension
+	url = git@github.com:AgileBits/onepassword-app-extension.git
+[submodule "IQKeyboardManager"]
+	path = IQKeyboardManager
+	url = git@github.com:hackiftekhar/IQKeyboardManager.git
