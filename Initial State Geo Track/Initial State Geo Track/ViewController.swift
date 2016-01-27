@@ -23,7 +23,15 @@ class ViewController: UIViewController {
         
         emailAddress.keyboardType = UIKeyboardType.EmailAddress
         
-
+        if let accessKeyId = NSUserDefaults.standardUserDefaults().objectForKey("accessKeyId") as? NSString {
+            if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("accessToken") as? NSString {
+                if let apiKey = NSUserDefaults.standardUserDefaults().objectForKey("apiKey") as? NSString {
+                    if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? NSString {
+                        self.apiController.setAuthenticationInfo(accessKeyId as String, at: accessToken as String, apik: apiKey as String, un: username as String)
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,19 +74,53 @@ class ViewController: UIViewController {
             
             if (!success) {
                 if (tfaRequired) {
-                    print("tfa required")
+                    let alertController = UIAlertController(title: "Initial State", message: "Initial State Multi Factor Token", preferredStyle: .Alert)
+                    
+                    let loginAction = UIAlertAction(title: "Continue", style: .Default) { (_) in
+                        let twoFactorToken = alertController.textFields![0] as UITextField
+                        
+                        self.apiController.continueAuth(twoFactorToken.text!, callback: {
+                            (success) -> Void in
+                            if (success) {
+                                self.successfulAuth()
+                            } else {
+                                self.clearEmail(sender)
+                                self.clearPassword(sender)
+                            }
+                        })
+                    }
+                    
+                    alertController.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+                        textField.placeholder = "<2fa token>"
+                        textField.keyboardType = UIKeyboardType.NumberPad
+                    })
+                    
+                    alertController.addAction(loginAction)
+                    
+                    self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                        print("displayed")
+                    })
                 } else {
                     print("finished")
                 }
             } else {
-                print("successful auth")
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authView") as! AuthedView
-                loggedInView.apiController = self.apiController
-                self.presentViewController(loggedInView, animated: true, completion: nil)
+                self.successfulAuth()
             }
         }
+    }
+    
+    func successfulAuth(){
+        print("successful auth")
+        
+        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.accessToken, forKey: "accessToken")
+        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.apiKey, forKey: "apiKey")
+        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.accessKeyId, forKey: "accessKeyId")
+        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.userName, forKey: "username")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authView") as! AuthedView
+        loggedInView.apiController = self.apiController
+        self.presentViewController(loggedInView, animated: true, completion: nil)
     }
 }
 

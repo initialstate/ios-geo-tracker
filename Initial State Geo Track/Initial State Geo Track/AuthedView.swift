@@ -35,6 +35,8 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         btnAuthInOut.setTitle(apiController.authenticationInfo.userName, forState: .Normal)
+        self.startStopRecordingButton.enabled = false
+        self.startStopRecordingButton.setTitle("Loading...", forState: .Normal)
         
         manager = CLLocationManager()
         manager.delegate = self
@@ -48,6 +50,14 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
                 print("successfully have access key")
                 self.eventStreamer.accessKey = self.apiController.authenticationInfo.accessKey
                 self.eventStreamer.bucketKey = "iOS GPS"
+                
+                NSUserDefaults.standardUserDefaults().setObject(self.eventStreamer.accessKey, forKey: "accessKey")
+                NSUserDefaults.standardUserDefaults().setObject(self.eventStreamer.bucketKey, forKey: "bucketKey")
+                
+                self.startStopRecordingButton.enabled = true
+                self.startStopRecordingButton.setTitle("Start", forState: .Normal)
+            } else {
+                self.logOut(self)
             }
         }
     }
@@ -63,6 +73,31 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             manager.stopUpdatingLocation()
             startStopRecordingButton.setTitle("Start", forState: .Normal)
         }
+    }
+    
+    
+    @IBAction func newBucketButton(sender: AnyObject) {
+        if (self.startRecording == true) {
+            self.startStopRecording(sender)
+        }
+        
+        self.eventStreamer.bucketKey = "iOS GPS (\(randomStringWithLength(5) as String as String))"
+        self.eventStreamer.isBucketCreated = false
+    }
+    
+    func randomStringWithLength (len : Int) -> NSString {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        let randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -91,6 +126,22 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
         print("Locations: \(locations)")
         
         let locationArray = locations as NSArray
+        
+        for location in locationArray {
+            let locationObj = location as! CLLocation
+            
+            if (self.eventStreamer.accessKey != nil && self.startRecording) {
+                let iso = NSDate.ISOStringFromDate(locationObj.timestamp)
+                print(iso)
+                var events = [EventDataPoint]()
+                
+                events.append(EventDataPoint(eventKey: "gps", value: "\(locationObj.coordinate.latitude), \(locationObj.coordinate.longitude)", isoDateTime: iso))
+                events.append(EventDataPoint(eventKey: "speed", value: "\(locationObj.speed)", isoDateTime: iso))
+                
+                eventStreamer.sendData(events)
+            }
+        }
+        
         let locationObj = locationArray.lastObject as! CLLocation
         let coordinate = locationObj.coordinate
         
@@ -104,16 +155,6 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
         locationFixed = true
         mapView.showsUserLocation = true
         
-        if (self.eventStreamer.accessKey != nil && self.startRecording) {
-            let iso = NSDate.ISOStringFromDate(locationObj.timestamp)
-            print(iso)
-            var events = [EventDataPoint]()
-            
-            events.append(EventDataPoint(eventKey: "gps", value: "\(coordinate.latitude), \(coordinate.longitude)", isoDateTime: iso))
-            events.append(EventDataPoint(eventKey: "speed", value: "\(locationObj.speed)", isoDateTime: iso))
-            
-            eventStreamer.sendData(events)
-        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

@@ -134,8 +134,48 @@ class ISApi {
                             callback(tfaRequired: false, success: false)
                         }
                     }
+                } else {
+                    callback(tfaRequired: false, success: false)
                 }
                 
+        }
+    }
+    
+    func continueAuth(token: String, callback: (success: Bool) -> Void) {
+        
+        let url = self.authenticationInfo.tempTokenPostUrl
+        
+        let request: [String: AnyObject] = [
+            "twoFactorToken": token,
+            "tempAccessToken": self.authenticationInfo.tempAccessToken,
+            "rememberMe": true
+        ]
+        
+        Alamofire.request(.POST, url, parameters: request, encoding: .JSON)
+            .responseJSON { response in
+                print("Called Url: \(response.request)")
+                print("request: \(request)")
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    if (response.response?.statusCode >= 200 && response.response?.statusCode < 300) {
+                        let authResp = (JSON as! NSDictionary)
+                        let user = (authResp["user"] as! NSDictionary)
+                        
+                        let uid = (user["id"] as! String)
+                        let at = (authResp["accessToken"] as! String)
+                        let apik = (authResp["apiKey"] as! String)
+                        let username = (user["email"] as! String)
+                        
+                        self.authenticationInfo.setAuth(at, akid: uid, apik: apik, un: username)
+                        callback(success: true)
+                    } else {
+                        NSLog("Error")
+                        callback(success: false)
+                    }
+                } else {
+                    callback(success: false)
+                }
         }
     }
     

@@ -19,7 +19,7 @@ class ISEventStreamer {
     func sendData(eventArray: [EventDataPoint]) {
         
         if (false == isBucketCreated) {
-            createBucket(nil, callback: { (bucketResult) -> Void in
+            createBucket(self.bucketKey, callback: { (bucketResult) -> Void in
                 print(bucketResult)
             })
         }
