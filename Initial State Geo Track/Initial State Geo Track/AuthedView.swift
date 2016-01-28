@@ -58,6 +58,7 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
                 
                 self.startStopRecordingButton.enabled = true
                 self.startStopRecordingButton.setTitle("Start", forState: .Normal)
+                self.newBucketButtonOutlet.setTitle(self.eventStreamer.bucketKey, forState: .Normal)
             } else {
                 self.logOut(self)
             }
@@ -87,6 +88,7 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
     }
     
     
+    @IBOutlet weak var newBucketButtonOutlet: UIButton!
     @IBAction func newBucketButton(sender: AnyObject) {
         if (self.startRecording == true) {
             self.startStopRecording(sender)
@@ -94,6 +96,7 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
         
         self.eventStreamer.bucketKey = "iOS GPS (\(randomStringWithLength(5) as String as String))"
         self.eventStreamer.isBucketCreated = false
+        self.newBucketButtonOutlet.setTitle(self.eventStreamer.bucketKey, forState: .Normal)
     }
     
     func randomStringWithLength (len : Int) -> NSString {
