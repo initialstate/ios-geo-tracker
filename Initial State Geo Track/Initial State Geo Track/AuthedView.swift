@@ -32,11 +32,13 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
         loginView.apiController = self.apiController
         self.presentViewController(loginView, animated: true, completion: nil)
     }
+    @IBOutlet weak var trackingLabel: UILabel!
     
     override func viewDidLoad() {
         btnAuthInOut.setTitle(apiController.authenticationInfo.userName, forState: .Normal)
         self.startStopRecordingButton.enabled = false
         self.startStopRecordingButton.setTitle("Loading...", forState: .Normal)
+        self.trackingLabel.hidden = true
         
         manager = CLLocationManager()
         manager.delegate = self
@@ -68,10 +70,19 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             self.startRecording = true
             manager.startUpdatingLocation()
             startStopRecordingButton.setTitle("Stop", forState: .Normal)
+            self.trackingLabel.hidden = false
+            
+            self.trackingLabel.alpha = 1
+            UIView.animateWithDuration(0.7, delay: 0.0, options: [.Repeat, .Autoreverse, .CurveEaseInOut], animations:
+                {
+                    self.trackingLabel.alpha = 0
+                }, completion: nil)
+            
         } else {
             self.startRecording = false
             manager.stopUpdatingLocation()
             startStopRecordingButton.setTitle("Start", forState: .Normal)
+            self.trackingLabel.hidden = true
         }
     }
     
