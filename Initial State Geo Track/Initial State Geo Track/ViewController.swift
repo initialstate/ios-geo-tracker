@@ -117,6 +117,8 @@ class ViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.accessKeyId, forKey: "accessKeyId")
         NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.userName, forKey: "username")
         
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authView") as! AuthedView
         loggedInView.apiController = self.apiController
