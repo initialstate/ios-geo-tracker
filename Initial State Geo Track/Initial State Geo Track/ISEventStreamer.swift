@@ -81,6 +81,7 @@ class ISEventStreamer {
                     print("bucket already created")
                     
                 }
+                self.isBucketCreated = true
                 
                 let bucketResult = BucketResult()
                 bucketResult.set(self.bucketKey!, bn: self.bucketKey!)

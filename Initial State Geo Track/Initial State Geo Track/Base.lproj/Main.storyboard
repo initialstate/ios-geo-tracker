@@ -119,7 +119,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9Q-Vt-c1k">
                                             <rect key="frame" x="20" y="106" width="560" height="30"/>
                                             <state key="normal" title="Log In">
-                                                <color key="titleColor" red="0.6943824291229248" green="0.69448405504226685" blue="0.69436019659042358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="logOut:" destination="ACc-XS-ZgW" eventType="touchUpInside" id="nbq-jC-t1j"/>

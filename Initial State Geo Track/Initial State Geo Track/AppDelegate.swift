@@ -7,19 +7,79 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    var manager:CLLocationManager!
+    var apiController = ISApi()
+    var eventStreamer = ISEventStreamer()
+    var startRecording = false
+    var coordinateRegion:MKCoordinateRegion!
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         IQKeyboardManager.sharedManager().enable = true
+                
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.pausesLocationUpdatesAutomatically = false
         
         return true
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        var shouldIAllow = false
+        
+        switch status{
+        case CLAuthorizationStatus.Restricted:
+            print("location status: restricted")
+        case CLAuthorizationStatus.Denied:
+            print("location status: denied")
+        case CLAuthorizationStatus.NotDetermined:
+            print("location status: not determined")
+        default:
+            shouldIAllow = true
+        }
+        
+        if (shouldIAllow == true) {
+            print("location allowed")
+        } else {
+            print("location denied")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("Locations: \(locations)")
+        
+        let locationArray = locations as NSArray
+        
+        for location in locationArray {
+            let locationObj = location as! CLLocation
+            
+            if (self.eventStreamer.accessKey != nil && self.startRecording) {
+                let iso = NSDate.ISOStringFromDate(locationObj.timestamp)
+                print(iso)
+                var events = [EventDataPoint]()
+                
+                events.append(EventDataPoint(eventKey: "gps", value: "\(locationObj.coordinate.latitude), \(locationObj.coordinate.longitude)", isoDateTime: iso))
+                events.append(EventDataPoint(eventKey: "speed", value: "\(locationObj.speed)", isoDateTime: iso))
+                
+                eventStreamer.sendData(events)
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        //print("Heading: \(newHeading)")
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -28,12 +88,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("in background")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
+        print("in foreground")
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

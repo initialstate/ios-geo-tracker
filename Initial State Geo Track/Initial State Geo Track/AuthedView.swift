@@ -14,51 +14,50 @@ import MapKit
 class AuthedView : UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var btnAuthInOut: UIButton!
-    var apiController:ISApi!
-    
-    var eventStreamer = ISEventStreamer()
     var startRecording = false
     var locationFixed:Bool!
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var mapView: MKMapView!
-    
-    var manager:CLLocationManager!
+    var locationManager:CLLocationManager!
     
     @IBAction func logOut(sender: AnyObject) {
+        if (self.startRecording == true) {
+            self.startStopRecording(sender)
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let loginView: ViewController = storyboard.instantiateViewControllerWithIdentifier("logIn") as! ViewController
-        self.apiController.resetAccessKeys()
-        self.apiController.resetAuth()
-        loginView.apiController = self.apiController
+        appDelegate.apiController.resetAccessKeys()
+        appDelegate.apiController.resetAuth()
         self.presentViewController(loginView, animated: true, completion: nil)
     }
     @IBOutlet weak var trackingLabel: UILabel!
     
     override func viewDidLoad() {
-        btnAuthInOut.setTitle(apiController.authenticationInfo.userName, forState: .Normal)
+        btnAuthInOut.setTitle(appDelegate.apiController.authenticationInfo.userName, forState: .Normal)
         self.startStopRecordingButton.enabled = false
         self.startStopRecordingButton.setTitle("Loading...", forState: .Normal)
         self.trackingLabel.hidden = true
         
-        manager = CLLocationManager()
-        manager.delegate = self
         locationFixed = false
         
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        apiController.getAccessKey { (success) -> Void in
+        
+        appDelegate.apiController.getAccessKey { (success) -> Void in
             if (success) {
                 print("successfully have access key")
-                self.eventStreamer.accessKey = self.apiController.authenticationInfo.accessKey
-                self.eventStreamer.bucketKey = "iOS GPS"
+                self.appDelegate.eventStreamer.accessKey = self.appDelegate.apiController.authenticationInfo.accessKey
+                self.appDelegate.eventStreamer.bucketKey = "iOS GPS"
                 
-                NSUserDefaults.standardUserDefaults().setObject(self.eventStreamer.accessKey, forKey: "accessKey")
-                NSUserDefaults.standardUserDefaults().setObject(self.eventStreamer.bucketKey, forKey: "bucketKey")
+                NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.eventStreamer.accessKey, forKey: "accessKey")
+                NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.eventStreamer.bucketKey, forKey: "bucketKey")
                 
                 self.startStopRecordingButton.enabled = true
                 self.startStopRecordingButton.setTitle("Start", forState: .Normal)
-                self.newBucketButtonOutlet.setTitle(self.eventStreamer.bucketKey, forState: .Normal)
+                self.newBucketButtonOutlet.setTitle(self.appDelegate.eventStreamer.bucketKey, forState: .Normal)
             } else {
                 self.logOut(self)
             }
@@ -69,7 +68,9 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
     @IBAction func startStopRecording(sender: AnyObject) {
         if (self.startRecording == false) {
             self.startRecording = true
-            manager.startUpdatingLocation()
+            appDelegate.startRecording = true
+            appDelegate.manager.startUpdatingLocation()
+            locationManager.startUpdatingLocation()
             startStopRecordingButton.setTitle("Stop", forState: .Normal)
             self.trackingLabel.hidden = false
             
@@ -81,12 +82,29 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             
         } else {
             self.startRecording = false
-            manager.stopUpdatingLocation()
+            appDelegate.startRecording = false
+            appDelegate.manager.stopUpdatingLocation()
+            locationManager.stopUpdatingLocation()
             startStopRecordingButton.setTitle("Start", forState: .Normal)
             self.trackingLabel.hidden = true
         }
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locationArray = locations as NSArray
+        
+        let locationObj = locationArray.lastObject as! CLLocation
+        let coordinate = locationObj.coordinate
+        
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        
+        print("Map Location: \(coordinate.latitude), \(coordinate.longitude)")
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+        locationFixed = true
+        mapView.showsUserLocation = true
+    }
     
     @IBOutlet weak var newBucketButtonOutlet: UIButton!
     @IBAction func newBucketButton(sender: AnyObject) {
@@ -94,9 +112,9 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             self.startStopRecording(sender)
         }
         
-        self.eventStreamer.bucketKey = "iOS GPS (\(randomStringWithLength(5) as String as String))"
-        self.eventStreamer.isBucketCreated = false
-        self.newBucketButtonOutlet.setTitle(self.eventStreamer.bucketKey, forState: .Normal)
+        appDelegate.eventStreamer.bucketKey = "iOS GPS (\(randomStringWithLength(5) as String as String))"
+        appDelegate.eventStreamer.isBucketCreated = false
+        self.newBucketButtonOutlet.setTitle(appDelegate.eventStreamer.bucketKey, forState: .Normal)
     }
     
     func randomStringWithLength (len : Int) -> NSString {
@@ -112,66 +130,5 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
         }
         
         return randomString
-    }
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        var shouldIAllow = false
-        
-        switch status{
-        case CLAuthorizationStatus.Restricted:
-            print("location status: restricted")
-        case CLAuthorizationStatus.Denied:
-            print("location status: denied")
-        case CLAuthorizationStatus.NotDetermined:
-            print("location status: not determined")
-        default:
-            shouldIAllow = true
-        }
-        
-        if (shouldIAllow == true) {
-            print("location allowed")
-        } else {
-            print("location denied")
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        print("Locations: \(locations)")
-        
-        let locationArray = locations as NSArray
-        
-        for location in locationArray {
-            let locationObj = location as! CLLocation
-            
-            if (self.eventStreamer.accessKey != nil && self.startRecording) {
-                let iso = NSDate.ISOStringFromDate(locationObj.timestamp)
-                print(iso)
-                var events = [EventDataPoint]()
-                
-                events.append(EventDataPoint(eventKey: "gps", value: "\(locationObj.coordinate.latitude), \(locationObj.coordinate.longitude)", isoDateTime: iso))
-                events.append(EventDataPoint(eventKey: "speed", value: "\(locationObj.speed)", isoDateTime: iso))
-                
-                eventStreamer.sendData(events)
-            }
-        }
-        
-        let locationObj = locationArray.lastObject as! CLLocation
-        let coordinate = locationObj.coordinate
-        
-        let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2.0, regionRadius * 2.0)
-        
-        
-        print("Last location: \(coordinate.latitude), \(coordinate.longitude)")
-        
-        mapView.setRegion(coordinateRegion, animated: true)
-        locationFixed = true
-        mapView.showsUserLocation = true
-        
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        //print("Heading: \(newHeading)")
     }
 }

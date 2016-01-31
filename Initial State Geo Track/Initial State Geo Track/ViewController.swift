@@ -9,11 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var apiController = ISApi()
-    
     
     @IBOutlet weak var onePasswordButton: UIButton!
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +25,7 @@ class ViewController: UIViewController {
             if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("accessToken") as? NSString {
                 if let apiKey = NSUserDefaults.standardUserDefaults().objectForKey("apiKey") as? NSString {
                     if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? NSString {
-                        self.apiController.setAuthenticationInfo(accessKeyId as String, at: accessToken as String, apik: apiKey as String, un: username as String)
+                        self.appDelegate.apiController.setAuthenticationInfo(accessKeyId as String, at: accessToken as String, apik: apiKey as String, un: username as String)
                     }
                 }
             }
@@ -70,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginAction(sender: AnyObject) {
-        apiController.auth(emailAddress.text!, pass: password.text!) { (tfaRequired: Bool, success: Bool) -> Void in
+        self.appDelegate.apiController.auth(emailAddress.text!, pass: password.text!) { (tfaRequired: Bool, success: Bool) -> Void in
             
             if (!success) {
                 if (tfaRequired) {
@@ -79,7 +77,7 @@ class ViewController: UIViewController {
                     let loginAction = UIAlertAction(title: "Continue", style: .Default) { (_) in
                         let twoFactorToken = alertController.textFields![0] as UITextField
                         
-                        self.apiController.continueAuth(twoFactorToken.text!, callback: {
+                        self.appDelegate.apiController.continueAuth(twoFactorToken.text!, callback: {
                             (success) -> Void in
                             if (success) {
                                 self.successfulAuth()
@@ -112,16 +110,15 @@ class ViewController: UIViewController {
     func successfulAuth(){
         print("successful auth")
         
-        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.accessToken, forKey: "accessToken")
-        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.apiKey, forKey: "apiKey")
-        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.accessKeyId, forKey: "accessKeyId")
-        NSUserDefaults.standardUserDefaults().setObject(self.apiController.authenticationInfo.userName, forKey: "username")
+        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.accessToken, forKey: "accessToken")
+        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.apiKey, forKey: "apiKey")
+        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.accessKeyId, forKey: "accessKeyId")
+        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.userName, forKey: "username")
         
         NSUserDefaults.standardUserDefaults().synchronize()
         
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authView") as! AuthedView
-        loggedInView.apiController = self.apiController
         self.presentViewController(loggedInView, animated: true, completion: nil)
     }
 }
