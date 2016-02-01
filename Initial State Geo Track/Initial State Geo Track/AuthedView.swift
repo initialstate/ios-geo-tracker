@@ -34,6 +34,8 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var trackingLabel: UILabel!
     
     override func viewDidLoad() {
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         btnAuthInOut.setTitle(appDelegate.apiController.authenticationInfo.userName, forState: .Normal)
         self.startStopRecordingButton.enabled = false
         self.startStopRecordingButton.setTitle("Loading...", forState: .Normal)
