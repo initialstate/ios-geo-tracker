@@ -13,11 +13,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var onePasswordButton: UIButton!
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBOutlet weak var versionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //self.onePasswordButton.hidden = (false == OnePasswordExtension.sharedExtension().isAppExtensionAvailable())
+        
+        if let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? NSString {
+            self.versionLabel.text = version as String
+            if let bundle = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as? NSString {
+                self.versionLabel.text = "\(version) (\(bundle))"
+            }
+        }
         
         emailAddress.keyboardType = UIKeyboardType.EmailAddress
         
@@ -26,6 +34,7 @@ class ViewController: UIViewController {
                 if let apiKey = NSUserDefaults.standardUserDefaults().objectForKey("apiKey") as? NSString {
                     if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? NSString {
                         self.appDelegate.apiController.setAuthenticationInfo(accessKeyId as String, at: accessToken as String, apik: apiKey as String, un: username as String)
+                        self.successfulAuth()
                     }
                 }
             }

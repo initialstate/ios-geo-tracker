@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -61,17 +61,29 @@
                                     <action selector="findLoginFrom1Password:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KC9-LV-XLa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(version)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZP-r8-jsG">
+                                <rect key="frame" x="450" y="571" width="130" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="NvR-sy-pPA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xZP-r8-jsG" secondAttribute="bottom" constant="8" symbolic="YES" id="4iQ-wa-fyD"/>
                             <constraint firstItem="0Gu-Pa-9eJ" firstAttribute="top" secondItem="a0l-Br-87q" secondAttribute="bottom" constant="10" id="64f-xc-GTz"/>
                             <constraint firstItem="teH-u2-h8N" firstAttribute="top" secondItem="0Gu-Pa-9eJ" secondAttribute="bottom" constant="19" id="Cfi-cv-ReU"/>
                             <constraint firstAttribute="bottom" secondItem="0Bk-U7-hSa" secondAttribute="bottom" constant="20" symbolic="YES" id="D5l-X0-8Tm"/>
                             <constraint firstItem="0Gu-Pa-9eJ" firstAttribute="leading" secondItem="teH-u2-h8N" secondAttribute="leading" id="Hxk-Hu-P5t"/>
+                            <constraint firstItem="xZP-r8-jsG" firstAttribute="top" secondItem="teH-u2-h8N" secondAttribute="bottom" constant="44" id="I1D-1h-qao"/>
                             <constraint firstItem="cPi-Ny-t5r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KeN-FQ-qew"/>
                             <constraint firstItem="0Gu-Pa-9eJ" firstAttribute="trailing" secondItem="cPi-Ny-t5r" secondAttribute="trailing" id="KnE-0W-NR4"/>
                             <constraint firstItem="teH-u2-h8N" firstAttribute="trailing" secondItem="0Gu-Pa-9eJ" secondAttribute="trailing" id="Ont-Bx-ZaL"/>
                             <constraint firstItem="cPi-Ny-t5r" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="UVs-Zd-Pmy"/>
+                            <constraint firstItem="xZP-r8-jsG" firstAttribute="trailing" secondItem="teH-u2-h8N" secondAttribute="trailing" id="Xlt-tE-pg0"/>
                             <constraint firstItem="0Bk-U7-hSa" firstAttribute="top" secondItem="teH-u2-h8N" secondAttribute="bottom" constant="23" id="Zc7-PV-166"/>
                             <constraint firstItem="0Bk-U7-hSa" firstAttribute="centerX" secondItem="teH-u2-h8N" secondAttribute="centerX" id="avw-Qg-GDT"/>
                             <constraint firstItem="0Gu-Pa-9eJ" firstAttribute="leading" secondItem="cPi-Ny-t5r" secondAttribute="leading" id="fUv-fn-vNg"/>
@@ -83,6 +95,7 @@
                         <outlet property="emailAddress" destination="0Gu-Pa-9eJ" id="vFP-rc-P4Q"/>
                         <outlet property="onePasswordButton" destination="a0l-Br-87q" id="rtg-4n-El8"/>
                         <outlet property="password" destination="teH-u2-h8N" id="qxh-hW-XFj"/>
+                        <outlet property="versionLabel" destination="xZP-r8-jsG" id="U7l-LK-55e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,12 +178,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6s-yI-uGa">
-                                <rect key="frame" x="226" y="530" width="148" height="50"/>
+                                <rect key="frame" x="20" y="530" width="560" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9xl-g6-DY7"/>
-                                    <constraint firstAttribute="width" constant="148" id="z51-lf-7Zs"/>
+                                    <constraint firstAttribute="height" constant="50" id="Soc-9z-jGl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="New Bucket">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -181,18 +193,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="o6s-yI-uGa" firstAttribute="leading" secondItem="dQ8-vC-vgv" secondAttribute="leadingMargin" id="CuT-Oe-gAQ"/>
                             <constraint firstItem="0BR-LE-XFe" firstAttribute="top" secondItem="dQ8-vC-vgv" secondAttribute="top" id="Kpb-uZ-Rrf"/>
                             <constraint firstItem="0BR-LE-XFe" firstAttribute="bottom" secondItem="vha-fM-Lb8" secondAttribute="top" id="MEd-i3-YeI"/>
                             <constraint firstItem="cbf-Oa-hl1" firstAttribute="bottom" secondItem="vha-fM-Lb8" secondAttribute="top" id="UbS-59-4xU"/>
                             <constraint firstItem="0BR-LE-XFe" firstAttribute="top" secondItem="cbf-Oa-hl1" secondAttribute="top" id="Vax-ac-K8o"/>
-                            <constraint firstItem="AKY-xF-Mhc" firstAttribute="centerX" secondItem="o6s-yI-uGa" secondAttribute="centerX" id="WQU-yM-S0J"/>
-                            <constraint firstItem="o6s-yI-uGa" firstAttribute="top" secondItem="AKY-xF-Mhc" secondAttribute="bottom" constant="8" symbolic="YES" id="X32-fG-KoQ"/>
                             <constraint firstItem="AKY-xF-Mhc" firstAttribute="centerX" secondItem="0BR-LE-XFe" secondAttribute="centerX" id="XQ3-hx-czv"/>
                             <constraint firstItem="cbf-Oa-hl1" firstAttribute="leading" secondItem="0BR-LE-XFe" secondAttribute="leading" id="Yy7-Nn-jZe"/>
                             <constraint firstItem="0BR-LE-XFe" firstAttribute="trailing" secondItem="cbf-Oa-hl1" secondAttribute="trailing" id="d5f-8M-wfv"/>
                             <constraint firstItem="0BR-LE-XFe" firstAttribute="leading" secondItem="dQ8-vC-vgv" secondAttribute="leading" id="dmb-Wh-kH1"/>
                             <constraint firstAttribute="trailing" secondItem="0BR-LE-XFe" secondAttribute="trailing" id="ieH-m7-Htv"/>
-                            <constraint firstItem="vha-fM-Lb8" firstAttribute="top" secondItem="o6s-yI-uGa" secondAttribute="bottom" constant="20" id="p55-cm-x26" userLabel="Bottom Layout Guide.top = New Bucket.bottom + 50"/>
+                            <constraint firstAttribute="bottom" secondItem="o6s-yI-uGa" secondAttribute="bottom" constant="20" symbolic="YES" id="kHD-yC-Yd1"/>
+                            <constraint firstItem="o6s-yI-uGa" firstAttribute="centerX" secondItem="AKY-xF-Mhc" secondAttribute="centerX" id="qwc-tB-hjB"/>
+                            <constraint firstItem="o6s-yI-uGa" firstAttribute="top" secondItem="AKY-xF-Mhc" secondAttribute="bottom" constant="8" symbolic="YES" id="t4z-bx-qXc"/>
                         </constraints>
                     </view>
                     <connections>
