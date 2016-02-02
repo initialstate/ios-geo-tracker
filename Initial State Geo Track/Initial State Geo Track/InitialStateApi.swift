@@ -10,10 +10,27 @@ import Foundation
 import Alamofire
 
 class ISApi {
-    struct ApiBase {
-        static let groker = "https://groker-dev.initialstate.com/api"
-        static let core = "https://dev-api.initialstate.com/api/v2"
-        static let corev1 = "https://dev-api.initialstate.com/api/v1"
+    var CoreBase = "https://dev-api.initialstate.com/api/v2"
+    var Corev1Base = "https://dev-api.initialstate.com/api/v1"
+    var env:Env = Env.Dev
+    
+    enum Env {
+        case Dev
+        case Prod
+    }
+    
+    init(env: Env = Env.Dev) {
+        self.env = env
+        switch env{
+        case Env.Prod:
+            self.CoreBase = "https://api.initialstate.com/api/v2"
+            self.Corev1Base = "https://api.initialstate.com/api/v1"
+            break
+        case Env.Dev:
+            self.CoreBase = "https://dev-api.initialstate.com/api/v2"
+            self.Corev1Base = "https://dev-api.initialstate.com/api/v1"
+            break
+        }
     }
     
     class AuthenticationInfo {
@@ -73,7 +90,7 @@ class ISApi {
     }
     
     func testAuth(callback: (success: Bool) -> Void) {
-        let url = "\(ApiBase.corev1)/user_tokens"
+        let url = "\(Corev1Base)/user_tokens"
         
         Alamofire.request(.GET, url, encoding: .JSON)
             .validate()
@@ -97,7 +114,7 @@ class ISApi {
             "twoFactorToken": tfa
         ]
         
-        let url = "\(ApiBase.corev1)/user_tokens"
+        let url = "\(Corev1Base)/user_tokens"
         
         Alamofire.request(.POST, url, parameters: request, encoding: .JSON)
             .responseJSON { response in
@@ -181,7 +198,7 @@ class ISApi {
     
     func getAccessKey(callback: (success: Bool) -> Void) {
         
-        let url = "\(ApiBase.corev1)/me/access_keys"
+        let url = "\(Corev1Base)/me/access_keys"
         let headers = [
             "X-IS-AT": authenticationInfo.accessToken,
             "X-IS-ApiKey": authenticationInfo.apiKey,

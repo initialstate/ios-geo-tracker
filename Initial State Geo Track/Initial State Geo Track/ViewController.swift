@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         if let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? NSString {
             self.versionLabel.text = version as String
             if let bundle = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as? NSString {
-                self.versionLabel.text = "\(version) (\(bundle))"
+                self.versionLabel.text = "\(appDelegate.apiController.env) \(version) (\(bundle))"
             }
         }
         

@@ -14,7 +14,25 @@ class ISEventStreamer {
     var bucketKey:String? = nil
     var accessKey:String? = nil
     var isBucketCreated:Bool = false
-    let BaseUrl = "https://groker-dev.initialstate.com/api"
+    var BaseUrl = "https://groker-dev.initialstate.com/api"
+    var env:Env = Env.Dev
+    
+    enum Env {
+        case Dev
+        case Prod
+    }
+    
+    init(env: Env = Env.Dev) {
+        self.env = env
+        switch env{
+        case Env.Prod:
+            self.BaseUrl = "https://groker.initialstate.com/api"
+            break
+        case Env.Dev:
+            self.BaseUrl = "https://groker-dev.initialstate.com/api"
+            break
+        }
+    }
     
     func sendData(eventArray: [EventDataPoint]) {
         
@@ -25,7 +43,7 @@ class ISEventStreamer {
         }
         
         let url = "\(BaseUrl)/events"
-        let headers = ["X-IS-AccessKey": self.accessKey!, "X-IS-BucketKey": self.bucketKey!]
+        let headers = ["X-IS-AccessKey": self.accessKey!, "X-IS-BucketKey": self.bucketKey!, "Accept-Version": "0.0.4"]
         
         var requestData: [[String: AnyObject]] = []
         
@@ -66,7 +84,7 @@ class ISEventStreamer {
             "bucketKey": self.bucketKey!
         ]
         
-        let headers = ["X-IS-AccessKey": self.accessKey!]
+        let headers = ["X-IS-AccessKey": self.accessKey!, "Accept-Version": "0.0.1"]
         
         Alamofire.request(.POST, url, parameters: request, headers: headers, encoding: .JSON)
         .responseJSON{ response in

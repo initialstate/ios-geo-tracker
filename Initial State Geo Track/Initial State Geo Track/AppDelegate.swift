@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     var window: UIWindow?
     var manager:CLLocationManager!
-    var apiController = ISApi()
-    var eventStreamer = ISEventStreamer()
+    var apiController = ISApi(env: ISApi.Env.Dev)
+    var eventStreamer = ISEventStreamer(env: ISEventStreamer.Env.Dev)
     var startRecording = false
     var coordinateRegion:MKCoordinateRegion!
     
@@ -70,8 +70,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 print(iso)
                 var events = [EventDataPoint]()
                 
+                //gps
                 events.append(EventDataPoint(eventKey: "gps", value: "\(locationObj.coordinate.latitude), \(locationObj.coordinate.longitude)", isoDateTime: iso))
-                events.append(EventDataPoint(eventKey: "speed", value: "\(locationObj.speed)", isoDateTime: iso))
+                
+                //speed
+                var speed:Double = 0
+                if (locationObj.speed > 0) {
+                    speed = locationObj.speed
+                }
+                events.append(EventDataPoint(eventKey: "speed", value: "\(speed)", isoDateTime: iso))
+                
+                //altidue
+                var altitude:Double = 0
+                if (locationObj.altitude > 0) {
+                    altitude = locationObj.altitude
+                }
+                events.append(EventDataPoint(eventKey: "altitude", value: "\(altitude)", isoDateTime: iso))
+                
+                //floor
+                if (locationObj.floor != nil) {
+                    var floor:Int? = nil
+                    floor = locationObj.floor!.level
+                    events.append(EventDataPoint(eventKey: "floor", value: "\(floor)", isoDateTime: iso))
+                }
+                
+                //course
+                if (locationObj.course != -1) {
+                    let course:Double = locationObj.course
+                    events.append(EventDataPoint(eventKey: "course", value: "\(course)", isoDateTime: iso))
+                }
                 
                 eventStreamer.sendData(events)
             }
