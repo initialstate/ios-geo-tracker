@@ -77,15 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 var speed:Double = 0
                 if (locationObj.speed > 0) {
                     speed = locationObj.speed
+                    speed = speed * 2.236936
                 }
-                events.append(EventDataPoint(eventKey: "speed", value: "\(speed)", isoDateTime: iso))
+                events.append(EventDataPoint(eventKey: "speed (mph)", value: "\(speed)", isoDateTime: iso))
                 
                 //altidue
                 var altitude:Double = 0
                 if (locationObj.altitude > 0) {
                     altitude = locationObj.altitude
                 }
-                events.append(EventDataPoint(eventKey: "altitude", value: "\(altitude)", isoDateTime: iso))
+                events.append(EventDataPoint(eventKey: "altitude (meters)", value: "\(altitude)", isoDateTime: iso))
                 
                 //floor
                 if (locationObj.floor != nil) {
@@ -97,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 //course
                 if (locationObj.course != -1) {
                     let course:Double = locationObj.course
-                    events.append(EventDataPoint(eventKey: "course", value: "\(course)", isoDateTime: iso))
+                    events.append(EventDataPoint(eventKey: "course (deg)", value: "\(course)", isoDateTime: iso))
                 }
                 
                 eventStreamer.sendData(events)
