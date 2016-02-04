@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1677A9721C52A730001B73C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9711C52A730001B73C6 /* AppDelegate.swift */; };
-		1677A9741C52A730001B73C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9731C52A730001B73C6 /* ViewController.swift */; };
 		1677A9771C52A730001B73C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677A9751C52A730001B73C6 /* Main.storyboard */; };
 		1677A9791C52A730001B73C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1677A9781C52A730001B73C6 /* Assets.xcassets */; };
 		1677A97C1C52A730001B73C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677A97A1C52A730001B73C6 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,7 @@
 		1677A9B91C52AFB0001B73C6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */; };
 		1677A9BA1C52AFB0001B73C6 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1677A9AC1C52AF3D001B73C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1677A9BF1C52B027001B73C6 /* InitialStateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */; };
+		1686CC2D1C63F7EE00B82CA8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686CC2C1C63F7EE00B82CA8 /* LoginView.swift */; };
 		168F00E51C57BA61000D8F7D /* ISEventStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F00E41C57BA61000D8F7D /* ISEventStreamer.swift */; };
 		168F00ED1C57BB0D000D8F7D /* EventDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F00EC1C57BB0D000D8F7D /* EventDataStructure.swift */; };
 		168F00F01C57E076000D8F7D /* NSDateISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F00EF1C57E076000D8F7D /* NSDateISO8601.swift */; };
@@ -39,6 +39,8 @@
 		168F011B1C5820D5000D8F7D /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F01091C5820D5000D8F7D /* IQUIView+IQKeyboardToolbar.swift */; };
 		168F011C1C5820D5000D8F7D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168F010B1C5820D5000D8F7D /* Info.plist */; };
 		168F011D1C5820D5000D8F7D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 168F010C1C5820D5000D8F7D /* IQKeyboardManager.bundle */; };
+		16A127B21C63C7E10016D236 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A127A71C63C7CC0016D236 /* Locksmith.framework */; };
+		16A127B31C63C7E10016D236 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16A127A71C63C7CC0016D236 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CE31C5447BA00E6A145 /* AuthedView.swift */; };
 		16EA2CEC1C56F08C00E6A145 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */; };
 		16EA2CF11C56F30F00E6A145 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CF01C56F30F00E6A145 /* OnePasswordExtension.m */; };
@@ -115,6 +117,55 @@
 			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS";
 		};
+		16A127A61C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EC25C591BA385AA004191AF;
+			remoteInfo = "Locksmith iOS";
+		};
+		16A127A81C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EC25C621BA385AB004191AF;
+			remoteInfo = "Locksmith iOS Tests";
+		};
+		16A127AA1C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EC25C751BA385F6004191AF;
+			remoteInfo = "Locksmith OS X";
+		};
+		16A127AC1C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EC25C7E1BA385F6004191AF;
+			remoteInfo = "Locksmith OS X Tests";
+		};
+		16A127AE1C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EC25CA71BA39C9F004191AF;
+			remoteInfo = "Locksmith watchOS";
+		};
+		16A127B01C63C7CC0016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FBD0C9491C1866BE00291F2A;
+			remoteInfo = "Locksmith tvOS";
+		};
+		16A127B41C63C7E10016D236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EC25C581BA385AA004191AF;
+			remoteInfo = "Locksmith iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -125,6 +176,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1677A9BA1C52AFB0001B73C6 /* Alamofire.framework in Embed Frameworks */,
+				16A127B31C63C7E10016D236 /* Locksmith.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +186,6 @@
 /* Begin PBXFileReference section */
 		1677A96E1C52A730001B73C6 /* Initial State Geo Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Initial State Geo Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1677A9711C52A730001B73C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1677A9731C52A730001B73C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1677A9761C52A730001B73C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1677A9781C52A730001B73C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1677A97B1C52A730001B73C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,6 +199,7 @@
 		1677A99F1C52A82D001B73C6 /* initialstate-wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "initialstate-wide.png"; sourceTree = "<group>"; };
 		1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateApi.swift; sourceTree = "<group>"; };
+		1686CC2C1C63F7EE00B82CA8 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		168F00E41C57BA61000D8F7D /* ISEventStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISEventStreamer.swift; sourceTree = "<group>"; };
 		168F00EC1C57BB0D000D8F7D /* EventDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDataStructure.swift; sourceTree = "<group>"; };
 		168F00EF1C57E076000D8F7D /* NSDateISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateISO8601.swift; sourceTree = "<group>"; };
@@ -169,6 +221,7 @@
 		168F01091C5820D5000D8F7D /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		168F010B1C5820D5000D8F7D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		168F010C1C5820D5000D8F7D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = ../Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
 		16EA2CE31C5447BA00E6A145 /* AuthedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedView.swift; sourceTree = "<group>"; };
 		16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		16EA2CEE1C56F30F00E6A145 /* Initial State Geo Track-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Initial State Geo Track-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -182,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1677A9B91C52AFB0001B73C6 /* Alamofire.framework in Frameworks */,
+				16A127B21C63C7E10016D236 /* Locksmith.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +259,7 @@
 		1677A9651C52A730001B73C6 = {
 			isa = PBXGroup;
 			children = (
+				16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */,
 				1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */,
 				1677A9701C52A730001B73C6 /* Initial State Geo Track */,
 				1677A9851C52A730001B73C6 /* Initial State Geo TrackTests */,
@@ -232,13 +287,13 @@
 				16EA2CF01C56F30F00E6A145 /* OnePasswordExtension.m */,
 				1677A99F1C52A82D001B73C6 /* initialstate-wide.png */,
 				1677A9711C52A730001B73C6 /* AppDelegate.swift */,
-				1677A9731C52A730001B73C6 /* ViewController.swift */,
+				1686CC2C1C63F7EE00B82CA8 /* LoginView.swift */,
+				16EA2CE31C5447BA00E6A145 /* AuthedView.swift */,
 				1677A9751C52A730001B73C6 /* Main.storyboard */,
 				1677A9781C52A730001B73C6 /* Assets.xcassets */,
 				1677A97A1C52A730001B73C6 /* LaunchScreen.storyboard */,
 				1677A97D1C52A730001B73C6 /* Info.plist */,
 				1677A9BE1C52B027001B73C6 /* InitialStateApi.swift */,
-				16EA2CE31C5447BA00E6A145 /* AuthedView.swift */,
 				16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */,
 				16EA2CEE1C56F30F00E6A145 /* Initial State Geo Track-Bridging-Header.h */,
 				168F00EE1C57BB21000D8F7D /* ISEventStreamer */,
@@ -352,6 +407,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		16A1279E1C63C7CC0016D236 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16A127A71C63C7CC0016D236 /* Locksmith.framework */,
+				16A127A91C63C7CC0016D236 /* Locksmith iOS Tests.xctest */,
+				16A127AB1C63C7CC0016D236 /* Locksmith.framework */,
+				16A127AD1C63C7CC0016D236 /* Locksmith OS X Tests.xctest */,
+				16A127AF1C63C7CC0016D236 /* Locksmith.framework */,
+				16A127B11C63C7CC0016D236 /* Locksmith.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,6 +436,7 @@
 			);
 			dependencies = (
 				1677A9BC1C52AFB0001B73C6 /* PBXTargetDependency */,
+				16A127B51C63C7E10016D236 /* PBXTargetDependency */,
 			);
 			name = "Initial State Geo Track";
 			productName = "Initial State Geo Track";
@@ -450,6 +519,10 @@
 					ProductGroup = 1677A9A21C52AF3D001B73C6 /* Products */;
 					ProjectRef = 1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */;
 				},
+				{
+					ProductGroup = 16A1279E1C63C7CC0016D236 /* Products */;
+					ProjectRef = 16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -510,6 +583,48 @@
 			remoteRef = 1677A9B71C52AF3D001B73C6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		16A127A71C63C7CC0016D236 /* Locksmith.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Locksmith.framework;
+			remoteRef = 16A127A61C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16A127A91C63C7CC0016D236 /* Locksmith iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Locksmith iOS Tests.xctest";
+			remoteRef = 16A127A81C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16A127AB1C63C7CC0016D236 /* Locksmith.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Locksmith.framework;
+			remoteRef = 16A127AA1C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16A127AD1C63C7CC0016D236 /* Locksmith OS X Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Locksmith OS X Tests.xctest";
+			remoteRef = 16A127AC1C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16A127AF1C63C7CC0016D236 /* Locksmith.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Locksmith.framework;
+			remoteRef = 16A127AE1C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16A127B11C63C7CC0016D236 /* Locksmith.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Locksmith.framework;
+			remoteRef = 16A127B01C63C7CC0016D236 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -549,11 +664,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1677A9741C52A730001B73C6 /* ViewController.swift in Sources */,
 				16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */,
 				16EA2CF11C56F30F00E6A145 /* OnePasswordExtension.m in Sources */,
 				168F01141C5820D5000D8F7D /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				168F010E1C5820D5000D8F7D /* IQUIScrollView+Additions.swift in Sources */,
+				1686CC2D1C63F7EE00B82CA8 /* LoginView.swift in Sources */,
 				168F01101C5820D5000D8F7D /* IQUIView+Hierarchy.swift in Sources */,
 				168F01191C5820D5000D8F7D /* IQTitleBarButtonItem.swift in Sources */,
 				168F00ED1C57BB0D000D8F7D /* EventDataStructure.swift in Sources */,
@@ -608,6 +723,11 @@
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
 			targetProxy = 1677A9BB1C52AFB0001B73C6 /* PBXContainerItemProxy */;
+		};
+		16A127B51C63C7E10016D236 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Locksmith iOS";
+			targetProxy = 16A127B41C63C7E10016D236 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

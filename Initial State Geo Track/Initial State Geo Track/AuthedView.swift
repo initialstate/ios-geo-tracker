@@ -26,9 +26,8 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             self.startStopRecording(sender)
         }
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let loginView: ViewController = storyboard.instantiateViewControllerWithIdentifier("logIn") as! ViewController
-        appDelegate.apiController.resetAccessKeys()
-        appDelegate.apiController.resetAuth()
+        let loginView: LoginView = storyboard.instantiateViewControllerWithIdentifier("loginView") as! LoginView
+        self.appDelegate.resetAuth()
         self.presentViewController(loginView, animated: true, completion: nil)
     }
     @IBOutlet weak var trackingLabel: UILabel!

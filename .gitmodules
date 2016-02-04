@@ -7,3 +7,6 @@
 [submodule "IQKeyboardManager"]
 	path = IQKeyboardManager
 	url = git@github.com:hackiftekhar/IQKeyboardManager.git
+[submodule "Locksmith"]
+	path = Locksmith
+	url = https://github.com/matthewpalmer/Locksmith.git

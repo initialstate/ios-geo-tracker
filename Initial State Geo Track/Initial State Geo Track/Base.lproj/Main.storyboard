@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="logIn" id="BYZ-38-t0r" customClass="ViewController" customModule="Initial_State_Geo_Track" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginView" customModule="Initial_State_Geo_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -102,7 +102,7 @@
         <!--Authed View-->
         <scene sceneID="mx9-eW-gCH">
             <objects>
-                <viewController storyboardIdentifier="authView" id="ACc-XS-ZgW" customClass="AuthedView" customModule="Initial_State_Geo_Track" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authedView" id="ACc-XS-ZgW" customClass="AuthedView" customModule="Initial_State_Geo_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M13-ad-Wr2"/>
                         <viewControllerLayoutGuide type="bottom" id="vha-fM-Lb8"/>

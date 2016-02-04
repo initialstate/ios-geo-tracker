@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Locksmith
 
-class ViewController: UIViewController {
+class LoginView: UIViewController {
     
     @IBOutlet weak var onePasswordButton: UIButton!
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -26,19 +27,7 @@ class ViewController: UIViewController {
                 self.versionLabel.text = "\(appDelegate.apiController.env) \(version) (\(bundle))"
             }
         }
-        
         emailAddress.keyboardType = UIKeyboardType.EmailAddress
-        
-        if let accessKeyId = NSUserDefaults.standardUserDefaults().objectForKey("accessKeyId") as? NSString {
-            if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("accessToken") as? NSString {
-                if let apiKey = NSUserDefaults.standardUserDefaults().objectForKey("apiKey") as? NSString {
-                    if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? NSString {
-                        self.appDelegate.apiController.setAuthenticationInfo(accessKeyId as String, at: accessToken as String, apik: apiKey as String, un: username as String)
-                        self.successfulAuth()
-                    }
-                }
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,15 +108,24 @@ class ViewController: UIViewController {
     func successfulAuth(){
         print("successful auth")
         
-        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.accessToken, forKey: "accessToken")
-        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.apiKey, forKey: "apiKey")
-        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.accessKeyId, forKey: "accessKeyId")
-        NSUserDefaults.standardUserDefaults().setObject(self.appDelegate.apiController.authenticationInfo.userName, forKey: "username")
+        let authenticationInfo = [
+            "accessToken": self.appDelegate.apiController.authenticationInfo.accessToken,
+            "apiKey": self.appDelegate.apiController.authenticationInfo.apiKey,
+            "accessKeyId": self.appDelegate.apiController.authenticationInfo.accessKeyId,
+            "username": self.appDelegate.apiController.authenticationInfo.userName
+        ]
+        do {
+            try Locksmith.updateData(authenticationInfo, forUserAccount: "initialstate")
+        } catch LocksmithError.NoError {
+            print("successfully saved auth info to keychain")
+            
+        } catch {
+            print("error saving auth info to keychain")
+        }
         
-        NSUserDefaults.standardUserDefaults().synchronize()
         
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authView") as! AuthedView
+        let loggedInView: AuthedView = storyboard.instantiateViewControllerWithIdentifier("authedView") as! AuthedView
         self.presentViewController(loggedInView, animated: true, completion: nil)
     }
 }
