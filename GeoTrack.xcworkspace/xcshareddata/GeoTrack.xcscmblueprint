@@ -1,13 +1,16 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "79E39052153C0C31012C8F7DA32CB061F930D3DA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "79E39052153C0C31012C8F7DA32CB061F930D3DA" : 0,
     "4E8FE33026C73951A712CD33348204351A71B278" : 0,
     "67620B5EFA902936DF04070AF595B76AB0333747" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1C4B05CE-9BFA-431E-9F5F-2D869FDB2CDD",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "79E39052153C0C31012C8F7DA32CB061F930D3DA" : "geo-ios\/",
     "4E8FE33026C73951A712CD33348204351A71B278" : "geo-ios\/Locksmith\/",
     "67620B5EFA902936DF04070AF595B76AB0333747" : "geo-ios\/Alamofire\/"
   },
@@ -24,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:InitialState\/ios-geo-tracker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "79E39052153C0C31012C8F7DA32CB061F930D3DA"
     }
   ]
 }
