@@ -38,13 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        
-        let authInfo = Locksmith.loadDataForUserAccount("initialstate")
-        if (authInfo != nil) {
-            self.apiController.setAuthenticationInfo(authInfo!["accessKeyId"] as! String, at: authInfo!["accessToken"] as! String, apik: authInfo!["apiKey"] as! String, un: authInfo!["username"] as! String)
-            self.eventStreamer.accessKey = authInfo!["accessKey"] as? String
-            self.authenticationInfo = authInfo
+        do{
+            let authInfo = Locksmith.loadDataForUserAccount("initialstate")
+            if (authInfo != nil) {
+                self.apiController.setAuthenticationInfo(authInfo!["accessKeyId"] as! String, at: authInfo!["accessToken"] as! String, apik: authInfo!["apiKey"] as! String, un: authInfo!["username"] as! String)
+                self.eventStreamer.accessKey = authInfo!["accessKey"] as? String
+                self.authenticationInfo = authInfo
+            }
+        } catch {
+            print("error loading data from keychain")
         }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -52,10 +54,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         
         if (self.authenticationInfo != nil) {
-            let authedViewController = storyboard.instantiateViewControllerWithIdentifier("authedView") as! AuthedView
             
-            self.window?.rootViewController = authedViewController
-            self.window?.makeKeyAndVisible()
+            self.apiController.getAccessKey({ (success) -> Void in
+                if (success) {
+                    let authedViewController = storyboard.instantiateViewControllerWithIdentifier("authedView") as! AuthedView
+                    
+                    self.window?.rootViewController = authedViewController
+                    self.window?.makeKeyAndVisible()
+                } else {
+                    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("loginView") as! LoginView
+                    self.window?.rootViewController = loginViewController
+                    self.window?.makeKeyAndVisible()
+                }
+                
+            })
         }
         else {
             let loginViewController = storyboard.instantiateViewControllerWithIdentifier("loginView") as! LoginView
