@@ -19,11 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>For streaming location information to User&apos;s Initial State account.</string>
+	<string>For streaming location information to User's Initial State account.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
