@@ -41,6 +41,8 @@
 		168F011D1C5820D5000D8F7D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 168F010C1C5820D5000D8F7D /* IQKeyboardManager.bundle */; };
 		16A127B21C63C7E10016D236 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A127A71C63C7CC0016D236 /* Locksmith.framework */; };
 		16A127B31C63C7E10016D236 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16A127A71C63C7CC0016D236 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		16C0831C1C73BEAD0089515E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C0831A1C73BEAC0089515E /* Fabric.framework */; };
+		16C0831D1C73BEAD0089515E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C0831B1C73BEAC0089515E /* Crashlytics.framework */; };
 		16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CE31C5447BA00E6A145 /* AuthedView.swift */; };
 		16EA2CEC1C56F08C00E6A145 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */; };
 		16EA2CF11C56F30F00E6A145 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CF01C56F30F00E6A145 /* OnePasswordExtension.m */; };
@@ -222,6 +224,8 @@
 		168F010B1C5820D5000D8F7D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		168F010C1C5820D5000D8F7D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = ../Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
+		16C0831A1C73BEAC0089515E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		16C0831B1C73BEAC0089515E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		16EA2CE31C5447BA00E6A145 /* AuthedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedView.swift; sourceTree = "<group>"; };
 		16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		16EA2CEE1C56F30F00E6A145 /* Initial State Geo Track-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Initial State Geo Track-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 			files = (
 				1677A9B91C52AFB0001B73C6 /* Alamofire.framework in Frameworks */,
 				16A127B21C63C7E10016D236 /* Locksmith.framework in Frameworks */,
+				16C0831D1C73BEAD0089515E /* Crashlytics.framework in Frameworks */,
+				16C0831C1C73BEAD0089515E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +265,8 @@
 		1677A9651C52A730001B73C6 = {
 			isa = PBXGroup;
 			children = (
+				16C0831A1C73BEAC0089515E /* Fabric.framework */,
+				16C0831B1C73BEAC0089515E /* Crashlytics.framework */,
 				16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */,
 				1677A9A11C52AF3D001B73C6 /* Alamofire.xcodeproj */,
 				1677A9701C52A730001B73C6 /* Initial State Geo Track */,
@@ -431,6 +439,7 @@
 				1677A96B1C52A730001B73C6 /* Frameworks */,
 				1677A96C1C52A730001B73C6 /* Resources */,
 				1677A9BD1C52AFB0001B73C6 /* Embed Frameworks */,
+				16C0830E1C73BE7B0089515E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -659,6 +668,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16C0830E1C73BE7B0089515E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 99c94511a1ae3546e05496e601d3ac6ef7d2e91d 00fd1f2c369194a67be92e108964f05f44854f93821021ea7fd0b92218e063bf    ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1677A96A1C52A730001B73C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -840,6 +865,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Initial State Geo Track/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = InitialState.GeoTrack;
@@ -858,6 +887,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Initial State Geo Track/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = InitialState.GeoTrack;

@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import MapKit
 import Locksmith
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -38,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        Fabric.with([Crashlytics.self])
+        
         let authInfo = Locksmith.loadDataForUserAccount("initialstate")
         if (authInfo != nil) {
             self.apiController.setAuthenticationInfo(authInfo!["accessKeyId"] as! String, at: authInfo!["accessToken"] as! String, apik: authInfo!["apiKey"] as! String, un: authInfo!["username"] as! String)
