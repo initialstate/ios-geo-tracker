@@ -77,10 +77,11 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
             self.trackingLabel.hidden = false
             
             self.trackingLabel.alpha = 1
-            UIView.animateWithDuration(0.7, delay: 0.0, options: [.Repeat, .Autoreverse, .CurveEaseInOut], animations:
-                {
-                    self.trackingLabel.alpha = 0
-                }, completion: nil)
+            
+//            UIView.animateWithDuration(0.7, delay: 0.0, options: [.Repeat, .Autoreverse, .CurveEaseInOut], animations:
+//                {
+//                    self.trackingLabel.alpha = 0
+//                }, completion: nil)
             
         } else {
             self.startRecording = false
