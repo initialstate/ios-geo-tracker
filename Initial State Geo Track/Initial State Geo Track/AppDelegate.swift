@@ -131,8 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
                 //floor
                 if (locationObj.floor != nil) {
-                    var floor:Int? = nil
-                    floor = locationObj.floor!.level
+                    let floor = locationObj.floor!.level
                     events.append(EventDataPoint(eventKey: "floor", value: "\(floor)", isoDateTime: iso))
                 }
                 
