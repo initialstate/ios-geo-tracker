@@ -198,16 +198,21 @@ class ISApi {
     
     func getAccessKey(callback: (success: Bool) -> Void) {
         
-        let url = "\(Corev1Base)/me/access_keys"
+        let url = "\(Corev1Base)/me/access_keys?createIfEmpty=true"
         let headers = [
             "X-IS-AT": authenticationInfo.accessToken,
             "X-IS-ApiKey": authenticationInfo.apiKey,
             "X-IS-AKID": authenticationInfo.accessKeyId
         ]
         
+        NSLog("\(headers)")
+        
         Alamofire.request(.GET, url, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                
+                if (response.response == nil) {
+                    callback(success: false)
+                    return
+                }
                 if (response.response?.statusCode >= 200 && response.response?.statusCode < 300) {
                     if let JSON = response.result.value {
                         
@@ -217,7 +222,11 @@ class ISApi {
                         print(accessKey)
                         
                         callback(success: true)
+                    } else {
+                        callback(success: false)
                     }
+                } else {
+                    callback(success: false)
                 }
         }
     }
