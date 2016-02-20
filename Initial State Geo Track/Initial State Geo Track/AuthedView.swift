@@ -16,6 +16,7 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var btnAuthInOut: UIButton!
     var startRecording = false
     var locationFixed:Bool!
+    var isAuthenticated = false
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var mapView: MKMapView!
@@ -60,14 +61,22 @@ class AuthedView : UIViewController,CLLocationManagerDelegate {
                 self.startStopRecordingButton.setTitle("Start", forState: .Normal)
                 let currentBucketKey:String = self.appDelegate.eventStreamer.bucketKey!
                 self.newBucketButtonOutlet.setTitle("Bucket Key: \(currentBucketKey)", forState: .Normal)
+                self.isAuthenticated = true
             } else {
-                self.logOut(self)
+                self.isAuthenticated = false
+                self.startStopRecordingButton.setTitle("Authenticate", forState: .Normal)
+                self.startStopRecordingButton.enabled = true
             }
         }
     }
     
     @IBOutlet weak var startStopRecordingButton: UIButton!
     @IBAction func startStopRecording(sender: AnyObject) {
+        if (self.isAuthenticated == false) {
+            self.logOut(self);
+            return
+        }
+        
         if (self.startRecording == false) {
             self.startRecording = true
             appDelegate.startRecording = true

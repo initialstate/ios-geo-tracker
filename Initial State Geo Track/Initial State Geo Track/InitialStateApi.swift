@@ -205,9 +205,26 @@ class ISApi {
             "X-IS-AKID": authenticationInfo.accessKeyId
         ]
         
-        NSLog("\(headers)")
+        if (headers["X-IS-AT"] == nil || headers["X-IS-AT"] == "" ||
+            headers["X-IS-ApiKey"] == nil || headers["X-IS-ApiKey"] == "" ||
+            headers["X-IS-AKID"] == nil || headers["X-IS-AKID"] == "") {
+            callback(success: false)
+            return
+        }
         
         Alamofire.request(.GET, url, headers: headers, encoding: .JSON)
+            .responseString { response in
+                
+                if (response.response == nil) {
+                    callback(success: false)
+                    return
+                }
+                if (response.response?.statusCode >= 300) {
+                    callback(success: false)
+                    return
+                }
+            
+            }
             .responseJSON { response in
                 if (response.response == nil) {
                     callback(success: false)
