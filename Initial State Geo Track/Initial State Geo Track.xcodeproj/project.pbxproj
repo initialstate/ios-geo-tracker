@@ -43,6 +43,7 @@
 		16A127B31C63C7E10016D236 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16A127A71C63C7CC0016D236 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16C0831C1C73BEAD0089515E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C0831A1C73BEAC0089515E /* Fabric.framework */; };
 		16C0831D1C73BEAD0089515E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C0831B1C73BEAC0089515E /* Crashlytics.framework */; };
+		16C843011C7E1ADC002FBCA5 /* initialstate-blueprint-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C843001C7E1ADC002FBCA5 /* initialstate-blueprint-logo.png */; };
 		16EA2CE41C5447BA00E6A145 /* AuthedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CE31C5447BA00E6A145 /* AuthedView.swift */; };
 		16EA2CEC1C56F08C00E6A145 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */; };
 		16EA2CF11C56F30F00E6A145 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EA2CF01C56F30F00E6A145 /* OnePasswordExtension.m */; };
@@ -226,6 +227,7 @@
 		16A1279D1C63C7CC0016D236 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = ../Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
 		16C0831A1C73BEAC0089515E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		16C0831B1C73BEAC0089515E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		16C843001C7E1ADC002FBCA5 /* initialstate-blueprint-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "initialstate-blueprint-logo.png"; sourceTree = "<group>"; };
 		16EA2CE31C5447BA00E6A145 /* AuthedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedView.swift; sourceTree = "<group>"; };
 		16EA2CE91C56F08C00E6A145 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		16EA2CEE1C56F30F00E6A145 /* Initial State Geo Track-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Initial State Geo Track-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				16EA2CEF1C56F30F00E6A145 /* OnePasswordExtension.h */,
 				16EA2CF01C56F30F00E6A145 /* OnePasswordExtension.m */,
 				1677A99F1C52A82D001B73C6 /* initialstate-wide.png */,
+				16C843001C7E1ADC002FBCA5 /* initialstate-blueprint-logo.png */,
 				1677A9711C52A730001B73C6 /* AppDelegate.swift */,
 				1686CC2C1C63F7EE00B82CA8 /* LoginView.swift */,
 				16EA2CE31C5447BA00E6A145 /* AuthedView.swift */,
@@ -646,6 +649,7 @@
 				1677A9A01C52A82D001B73C6 /* initialstate-wide.png in Resources */,
 				1677A9791C52A730001B73C6 /* Assets.xcassets in Resources */,
 				168F00F21C57E68D000D8F7D /* AppIcon.appiconset in Resources */,
+				16C843011C7E1ADC002FBCA5 /* initialstate-blueprint-logo.png in Resources */,
 				1677A9771C52A730001B73C6 /* Main.storyboard in Resources */,
 				168F011D1C5820D5000D8F7D /* IQKeyboardManager.bundle in Resources */,
 				168F011C1C5820D5000D8F7D /* Info.plist in Resources */,
